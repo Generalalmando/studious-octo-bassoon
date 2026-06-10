@@ -88,13 +88,43 @@
             pointer-events: none;
         }
 
+        /* TARJETAS Y CONTENEDORES */
+        .content-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(230, 161, 132, 0.2);
+            box-shadow: 0 8px 20px rgba(74, 53, 37, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            box-shadow: 0 12px 28px rgba(74, 53, 37, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .separator-line {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #e6a184, transparent);
+            margin: 18px 0;
+            opacity: 0.4;
+        }
+
         .magazine-img {
             width: 100%;
             height: auto;
-            border-radius: 10px;
-            margin: 10px 0;
-            box-shadow: 0 4px 12px rgba(74, 53, 37, 0.1);
-            border: 3px solid #ffffff;
+            border-radius: 14px;
+            margin: 12px 0;
+            box-shadow: 0 10px 25px rgba(74, 53, 37, 0.18);
+            border: 4px solid #ffffff;
+            background: linear-gradient(135deg, #faf6f0 0%, #f5eee4 100%);
+            transition: all 0.3s ease;
+        }
+
+        .magazine-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(74, 53, 37, 0.25);
         }
 
         .header-tag {
@@ -123,12 +153,13 @@
         }
 
         .highlight-box {
-            background-color: #f7f1e8;
+            background: linear-gradient(135deg, rgba(230, 161, 132, 0.1) 0%, rgba(166, 124, 82, 0.05) 100%);
             border-left: 5px solid #e6a184; 
-            padding: 12px;
+            padding: 14px;
             border-radius: 0 12px 12px 0;
             margin: 15px 0;
             font-size: 14px;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.03);
         }
 
         .nav-buttons {
@@ -286,10 +317,12 @@
                     <h1 style="font-size: 32px; color: #4a3525; text-align: center; margin-bottom: 2px; letter-spacing: -0.5px;">NOTA VERDE</h1>
                     <p style="text-align: center; color: #8f9e8b; font-weight: bold; font-family: 'Segoe UI'; letter-spacing: 2px; font-size: 12px; margin-bottom: 10px;">COLEGIO MIRAFLORES</p>
                     
-                    <img class="magazine-img" src="imagen_bienestar_emocional.jpg" alt="Bienestar Emocional Docente" onerror="this.onerror=null; this.src='imagen_bienestar_emocional.png';">
+                    <img class="magazine-img" src="images/imagen_bienestar_emocional.jpg" alt="Bienestar Emocional Docente">
+                    
+                    <p style="text-align: center; color: #8f9e8b; font-style: italic; font-size: 13px; margin-top: 10px;">Un espacio personal de calma, monitoreo y soporte cotidiano.</p>
                 </div>
                 <div class="nav-buttons" style="flex-direction: column; gap: 10px; margin-top: 5px;">
-                    <button class="btn outline emergency" style="width: 100%;" onclick="jumpToPage(5)">🚨 Pausa Inmediata: Ir a Respirar</button>
+                    <button class="btn outline emergency" style="width: 100%;" onclick="jumpToPage(9)">🚨 Pausa Inmediata: Ir a Respirar</button>
                     <button class="btn" style="width: 100%;" onclick="nextPage(0)">Abrir Cuadernillo ➔</button>
                 </div>
             </div>
@@ -300,12 +333,14 @@
                     <div class="header-tag">📖 Contenido</div>
                     <h2>Ruta de Apoyo</h2>
                     <ul style="list-style: none; margin-top: 15px;">
-                        <li style="margin-bottom: 14px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>1.</strong> El peso de educar hoy</li>
-                        <li style="margin-bottom: 14px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>2.</strong> El Nervio Vago: Tu freno biológico</li>
-                        <li style="margin-bottom: 14px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>3.</strong> El escudo del cuidador</li>
-                        <li style="margin-bottom: 14px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>4.</strong> Instrucciones de rescate</li>
-                        <li style="margin-bottom: 14px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>5.</strong> ⏱️ Entrenador Auditivo</li>
-                        <li style="margin-bottom: 14px; padding-bottom: 6px;"><strong>6.</strong> Nuestra red de seguridad</li>
+                        <li style="margin-bottom: 12px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>1.</strong> El peso de educar hoy</li>
+                        <li style="margin-bottom: 12px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>2.</strong> El Nervio Vago: Tu freno biológico</li>
+                        <li style="margin-bottom: 12px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>3.</strong> El escudo del cuidador</li>
+                        <li style="margin-bottom: 12px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>4.</strong> ¿Qué queremos cultivar?</li>
+                        <li style="margin-bottom: 12px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>5.</strong> Recordatorios para el día</li>
+                        <li style="margin-bottom: 12px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>6.</strong> Mi día, mis emociones</li>
+                        <li style="margin-bottom: 12px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>7.</strong> Relajación de Respiración</li>
+                        <li style="margin-bottom: 12px; padding-bottom: 6px;"><strong>8.</strong> Práctica Guiada</li>
                     </ul>
                 </div>
                 <div class="nav-buttons">
@@ -319,11 +354,14 @@
                 <div>
                     <div class="header-tag">🌿 1. Contexto Real</div>
                     <h2>El peso de educar hoy</h2>
-                    <p>Trabajar en un entorno complejo expone al cuerpo a una alta demanda socioemocional. Sentir desgaste o cansancio es una respuesta biológica normal.</p>
                     
-                    <img class="magazine-img" src="imagen_apoyarse_docentes.jpg" alt="Apoyarse en otros docentes" onerror="this.onerror=null; this.src='imagen_apoyarse_docentes.png';">
+                    <div class="content-card">
+                        <p>Trabajar en un entorno complejo expone al cuerpo a una alta demanda socioemocional. Sentir desgaste o cansancio es una respuesta biológica normal.</p>
+                    </div>
                     
-                    <div class="highlight-box" style="margin: 8px 0; padding: 10px;">
+                    <img class="magazine-img" src="images/imagen_apoyarse_docentes.jpg" alt="Apoyarse en otros docentes">
+                    
+                    <div class="highlight-box">
                         Compartir experiencias fortalece el bienestar y la confianza profesional entre pares.
                     </div>
                 </div>
@@ -338,11 +376,12 @@
                 <div>
                     <div class="header-tag">🧠 2. La Ciencia de la Calma</div>
                     <h2>Tu Freno Biológico</h2>
-                    <p>Ante la incertidumbre o un hito de tensión, el cuerpo activa sus alarmas. Necesitamos activar un mecanismo físico regulador: el Nervio Vago.</p>
                     
-                    <img class="magazine-img" src="imagen_cultivar_recordatorios.jpg" alt="Qué queremos cultivar" onerror="this.onerror=null; this.src='imagen_cultivar_recordatorios.png';">
-
-                    <p style="font-size: 14px; margin-top: 5px;">Al respirar extendiendo deliberadamente la exhalación, masajeamos este canal, reduciendo la ansiedad de manera inmediata.</p>
+                    <div class="content-card">
+                        <p>Ante la incertidumbre o un hito de tensión, el cuerpo activa sus alarmas. Necesitamos activar un mecanismo físico regulador: el Nervio Vago.</p>
+                        <div class="separator-line"></div>
+                        <p style="font-size: 14px; margin-bottom: 0;">Al respirar extendiendo deliberadamente la exhalación, masajeamos este canal, reduciendo la ansiedad de manera inmediata.</p>
+                    </div>
                 </div>
                 <div class="nav-buttons">
                     <button class="btn outline" onclick="prevPage(3)">Atrás</button>
@@ -355,9 +394,12 @@
                 <div>
                     <div class="header-tag">🛡️ 3. Prevención Activa</div>
                     <h2>El Escudo del Cuidador</h2>
-                    <p>Regular los propios estados emocionales es un piso mínimo de resguardo. Establecer estrategias diarias nos ayuda a mitigar la sobrecarga acumulada.</p>
                     
-                    <img class="magazine-img" src="imagen_mi_dia_emociones.jpg" alt="Estrategias diarias" onerror="this.onerror=null; this.src='imagen_mi_dia_emociones.png';">
+                    <div class="content-card">
+                        <p>Regular los propios estados emocionales es un piso mínimo de resguardo. Establecer estrategias diarias nos ayuda a mitigar la sobrecarga acumulada.</p>
+                        <div class="separator-line"></div>
+                        <p style="font-size: 14px; margin-bottom: 0; text-align: center; color: #8f9e8b; font-weight: bold;">🪫 ➔ 🔋</p>
+                    </div>
                 </div>
                 <div class="nav-buttons">
                     <button class="btn outline" onclick="prevPage(4)">Atrás</button>
@@ -365,14 +407,17 @@
                 </div>
             </div>
 
-            <!-- PÁG 5: INSTRUCCIONES -->
+            <!-- PÁG 5: ¿QUÉ QUEREMOS CULTIVAR? -->
             <div class="page" id="p5">
                 <div>
-                    <div class="header-tag">⚙️ 4. Instrucciones</div>
-                    <h2>Entrenamiento 4-4-6</h2>
-                    <p>Lograr un momento de quietud mental requiere soportes prácticos. Sigue los ritmos basados en la guía de relajación fisiológica:</p>
+                    <div class="header-tag">🌱 4. Reflexión Personal</div>
+                    <h2>¿Qué queremos cultivar?</h2>
                     
-                    <img class="magazine-img" src="imagen_relajacion_respiracion.jpg" alt="Relajación de Respiración" onerror="this.onerror=null; this.src='imagen_relajacion_respiracion.png';">
+                    <img class="magazine-img" src="images/imagen_cultivar_recordatorios.jpg" alt="¿Qué queremos cultivar?">
+                    
+                    <div class="highlight-box">
+                        Reconoce qué valores y emociones deseas fortalecer en tu práctica diaria como educador/a.
+                    </div>
                 </div>
                 <div class="nav-buttons">
                     <button class="btn outline" onclick="prevPage(5)">Atrás</button>
@@ -380,8 +425,62 @@
                 </div>
             </div>
 
-            <!-- PÁG 6: HERRAMIENTA INTERACTIVA -->
+            <!-- PÁG 6: RECORDATORIOS PARA EL DÍA -->
             <div class="page" id="p6">
+                <div>
+                    <div class="header-tag">⏰ 5. Anclajes Cotidianos</div>
+                    <h2>Recordatorios para el día a día</h2>
+                    
+                    <img class="magazine-img" src="images/imagen_cultivar_recordatorios.jpg" alt="Recordatorios">
+                    
+                    <div class="highlight-box">
+                        Pequeñas pausas estratégicas durante tu jornada te ayudan a mantener la calma y el enfoque emocional.
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn outline" onclick="prevPage(6)">Atrás</button>
+                    <button class="btn" onclick="nextPage(6)">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- PÁG 7: MI DÍA, MIS EMOCIONES -->
+            <div class="page" id="p7">
+                <div>
+                    <div class="header-tag">💚 6. Estrategias Diarias</div>
+                    <h2>Mi día, mis emociones</h2>
+                    
+                    <img class="magazine-img" src="images/imagen_mi_dia_emociones.jpg" alt="Mi día, mis emociones">
+                    
+                    <div class="highlight-box">
+                        Descubre herramientas prácticas para navegar tus emociones en cada momento de la jornada escolar.
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn outline" onclick="prevPage(7)">Atrás</button>
+                    <button class="btn" onclick="nextPage(7)">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- PÁG 8: RELAJACIÓN DE RESPIRACIÓN -->
+            <div class="page" id="p8">
+                <div>
+                    <div class="header-tag">🫁 7. Técnica Guiada</div>
+                    <h2>Relajación de Respiración</h2>
+                    
+                    <img class="magazine-img" src="images/imagen_relajacion_respiracion.jpg" alt="Relajación de Respiración">
+                    
+                    <div class="highlight-box">
+                        Prepárate para la próxima práctica interactiva. Esta técnica 4-4-6 te llevará a un estado de calma profunda.
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn outline" onclick="prevPage(8)">Atrás</button>
+                    <button class="btn" onclick="nextPage(8)">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- PÁG 9: HERRAMIENTA INTERACTIVA -->
+            <div class="page" id="p9">
                 <div class="stamp-modal" id="stamp-modal">
                     <div class="stamp-icon">🏅</div>
                     <h2 style="color: #70533e; border: none; margin-bottom: 5px;">¡Bien hecho!</h2>
@@ -390,7 +489,7 @@
                 </div>
 
                 <div>
-                    <div class="header-tag">⏱️ 5. Práctica Guiada</div>
+                    <div class="header-tag">⏱️ 8. Práctica Guiada</div>
                     <h2 style="text-align: center; border: none; margin-bottom: 0;">Anclaje Activo</h2>
                     
                     <div class="breathing-wrapper">
@@ -402,22 +501,30 @@
                     <button class="btn" id="audio-start-btn" style="width: 100%; padding: 14px; font-size: 15px; background: #70533e;">▶ INICIAR CICLO</button>
                 </div>
                 <div class="nav-buttons">
-                    <button class="btn outline" onclick="prevPage(6); stopBreathing();">Atrás</button>
-                    <button class="btn" onclick="nextPage(6); stopBreathing();">Siguiente</button>
+                    <button class="btn outline" onclick="prevPage(9); stopBreathing();">Atrás</button>
+                    <button class="btn" onclick="nextPage(9); stopBreathing();">Siguiente</button>
                 </div>
             </div>
 
-            <!-- PÁG 7: CIERRE -->
-            <div class="page" id="p7">
+            <!-- PÁG 10: CIERRE -->
+            <div class="page" id="p10">
                 <div>
-                    <div class="header-tag">🤝 6. Red Institucional</div>
+                    <div class="header-tag">🤝 9. Red Institucional</div>
                     <h2>Tu Espacio Seguro</h2>
-                    <p>Esta herramienta te acompaña en cualquier hito de la jornada. Al cerrar tu sesión, te invitamos a reflexionar sobre tus recursos de afrontamiento protectores:</p>
                     
-                    <img class="magazine-img" src="imagen_mi_bitacora.jpg" alt="Mi Bitácora" onerror="this.onerror=null; this.src='imagen_mi_bitacora.png';">
+                    <div class="content-card">
+                        <p>Esta herramienta te acompaña en cualquier hito de la jornada. Recuerda que el autocuidado no es lujo, es tu derecho profesional.</p>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <strong>Siempre tienes opciones:</strong><br>
+                        • Usar este anclaje de forma preventiva<br>
+                        • Restaurar equilibrio tras interacciones de alta exigencia<br>
+                        • Conectar con tus colegas para validar experiencias
+                    </div>
                 </div>
                 <div class="nav-buttons">
-                    <button class="btn outline" onclick="prevPage(7)">Atrás</button>
+                    <button class="btn outline" onclick="prevPage(10)">Atrás</button>
                     <button class="btn" onclick="location.reload()">🔄 Reiniciar</button>
                 </div>
             </div>
@@ -428,11 +535,12 @@
     <!-- Puntos de Navegación -->
     <div class="progress-dots" id="dots-container">
         <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
         <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
     </div>
 
     <script>
-        const totalPages = 8;
+        const totalPages = 11;
         let currentPage = 0;
 
         function updateDots() {
