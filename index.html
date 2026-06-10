@@ -3,39 +3,594 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atalaya - Prueba</title>
+    <title>Atalaya Docente - Colegio Miraflores</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif; 
+        }
+
+        h1, h2, h3, .btn, .header-tag {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         body {
+            background: radial-gradient(circle at 20% 30%, #eef7ee 0%, #d8ead8 50%, #c4ddc4 100%);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5;
+            overflow: hidden;
+            color: #2c4c2f;
         }
-        canvas {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        .magazine-wrapper {
+            perspective: 2500px;
+            width: 100%;
+            max-width: 420px;
+            height: 88vh;
+            position: relative;
+        }
+
+        .magazine {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to right, #fbfdfb 0%, #f4f9f4 100%);
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 12px 20px 20px 12px;
+            box-shadow: -8px 12px 30px rgba(44, 76, 47, 0.15), inset 4px 0 15px rgba(0,0,0,0.03);
+            transform-origin: left center;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.5s;
+            z-index: 1;
+            opacity: 0;
+            pointer-events: none;
+            overflow-y: auto;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 18px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.02) 100%);
+            border-radius: 12px 0 0 12px;
+        }
+
+        .page.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: rotateY(0deg);
+            z-index: 5;
+        }
+
+        .page.turned {
+            transform: rotateY(-180deg);
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .header-tag {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #6a9c72;
+            margin-bottom: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        h2 {
+            color: #315c36;
+            font-size: 24px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            border-bottom: 2px dashed #c4ddc4;
+            padding-bottom: 10px;
+        }
+
+        p, li {
+            color: #4a664d;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .highlight-box {
+            background-color: #f1f8e9;
+            border-left: 5px solid #81c784;
+            padding: 15px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+            font-size: 15px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            gap: 15px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn {
+            background: #558b5e;
+            color: #fff;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            flex: 1;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(85, 139, 94, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn.outline {
+            background: transparent;
+            color: #558b5e;
+            border: 2px solid #558b5e;
+            box-shadow: none;
+        }
+
+        .btn.emergency {
+            border: 2px solid #e53935;
+            color: #e53935;
+            background: rgba(229, 57, 53, 0.05);
+        }
+
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #b5d5b8;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: #315c36;
+            transform: scale(1.4);
+        }
+
+        .icon-large {
+            font-size: 50px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- MOTOR VISUAL DE RESPIRACIÓN --- */
+        .breathing-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            height: 180px;
+            position: relative;
+        }
+
+        .breathing-core {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #81c784 0%, #4caf50 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 35px;
+            box-shadow: 0 0 30px rgba(129, 199, 132, 0.6);
+            transition: all 0.2s;
+            position: absolute;
+        }
+
+        .inhale-anim {
+            transform: scale(1.8);
+            background: radial-gradient(circle, #66bb6a 0%, #388e3c 100%);
+            transition: transform 4s ease-out, background 4s;
+        }
+
+        .hold-anim {
+            transform: scale(1.8);
+            background: radial-gradient(circle, #43a047 0%, #2e7d32 100%);
+            box-shadow: 0 0 40px rgba(46, 125, 50, 0.7);
+            transition: background 1s, box-shadow 1s;
+        }
+
+        .exhale-anim {
+            transform: scale(1);
+            background: radial-gradient(circle, #81c784 0%, #4caf50 100%);
+            transition: transform 6s ease-in-out, background 6s;
+        }
+
+        .status-text {
+            margin-top: 130px;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: bold;
+            font-size: 18px;
+            color: #315c36;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- ESTAMPILLA / MODAL DE RECOMPENSA --- */
+        .stamp-modal {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 100;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 12px 20px 20px 12px;
+            padding: 20px;
+        }
+
+        .stamp-icon {
+            font-size: 80px;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 10px;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+            80% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <canvas id="atalayaCanvas" width="320" height="160"></canvas>
+    <div class="magazine-wrapper" id="swipe-zone">
+        <div class="magazine">
+
+            <!-- PÁG 0: PORTADA -->
+            <div class="page active" id="p0">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+                    <div class="icon-large float-anim">🪴</div>
+                    <h1 style="font-size: 30px; color: #1b5e20; text-align: center; margin-bottom: 10px; line-height: 1.1;">ATALAYA DOCENTE</h1>
+                    <p style="text-align: center; color: #558b5e; font-weight: bold; font-family: 'Segoe UI'; letter-spacing: 1px;">Colegio Miraflores</p>
+                    
+                    <div style="margin-top: 40px; text-align: center; border-top: 1px solid #d8ead8; padding-top: 20px;">
+                        <p style="font-size: 15px; color: #6a9c72; font-style: italic;">"Un refugio de calma en medio de la alta exigencia."</p>
+                    </div>
+                </div>
+                <!-- BOTONES DE PORTADA (INCLUYE EMERGENCIA) -->
+                <div class="nav-buttons" style="flex-direction: column; gap: 12px;">
+                    <button class="btn outline emergency" style="width: 100%;" onclick="jumpToPage(5)">🚨 Emergencia: Ir a Respirar</button>
+                    <button class="btn" style="width: 100%;" onclick="nextPage(0)">Abrir Manual ➔</button>
+                </div>
+            </div>
+
+            <!-- PÁG 1: ÍNDICE -->
+            <div class="page" id="p1">
+                <div>
+                    <div class="header-tag">📖 Contenido</div>
+                    <h2>Ruta de Apoyo</h2>
+                    <ul style="list-style: none; margin-top: 20px;">
+                        <li style="margin-bottom: 18px;"><strong>1.</strong> El peso de educar hoy</li>
+                        <li style="margin-bottom: 18px;"><strong>2.</strong> El Nervio Vago: Tu freno biológico</li>
+                        <li style="margin-bottom: 18px;"><strong>3.</strong> Instrucciones de rescate</li>
+                        <li style="margin-bottom: 18px;"><strong>4.</strong> ⏱️ Entrenador Auditivo</li>
+                        <li style="margin-bottom: 18px;"><strong>5.</strong> Nuestra red de seguridad</li>
+                    </ul>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn outline" onclick="prevPage(1)">Atrás</button>
+                    <button class="btn" onclick="nextPage(1)">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- PÁG 2: CONTEXTO -->
+            <div class="page" id="p2">
+                <div>
+                    <div class="header-tag">🌿 1. Contexto Real</div>
+                    <h2>El peso de educar hoy</h2>
+                    <p>Sabemos que trabajar en un entorno con un 91% de vulnerabilidad escolar mantiene al cuerpo en alerta constante.</p>
+                    <div class="highlight-box">
+                        <strong>No es falla tuya, es biología.</strong><br>
+                        Los mapeos demuestran que lidiar con apoderados desregulados y gestionar crisis desde las 14:00 horas agota nuestras reservas fisiológicas de forma extrema.
+                    </div>
+                    <p>Sentir desgaste o "burnout" no es señal de debilidad profesional; es la respuesta natural de un cerebro expuesto a un estado de hipervigilancia sostenida.</p>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn outline" onclick="prevPage(2)">Atrás</button>
+                    <button class="btn" onclick="nextPage(2)">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- PÁG 3: NERVIO VAGO -->
+            <div class="page" id="p3">
+                <div>
+                    <div class="header-tag">🧠 2. La Ciencia de la Calma</div>
+                    <h2>Tu Freno Biológico</h2>
+                    <p>Cuando vivimos un momento tenso (ej: vulneración de conductos regulares), nuestro corazón se acelera y el cuerpo se prepara para "pelear o huir".</p>
+                    <p>No podemos calmar la mente solo "pensando en positivo". Necesitamos presionar un botón físico: <strong>El Nervio Vago</strong>.</p>
+                    <div class="highlight-box">
+                        Este nervio recorre desde el cerebro hasta el diafragma. Al alargar la exhalación, lo masajeamos físicamente, obligando al corazón a desacelerar en menos de dos minutos.
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn outline" onclick="prevPage(3)">Atrás</button>
+                    <button class="btn" onclick="nextPage(3)">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- PÁG 4: INSTRUCCIONES HERRAMIENTA -->
+            <div class="page" id="p4">
+                <div>
+                    <div class="header-tag">⚙️ 3. Instrucciones</div>
+                    <h2>Entrenamiento 4-4-6</h2>
+                    <p>A veces nos cuesta mantener el foco y quedarnos quietos. Por eso, diseñamos la siguiente página con <strong>Guía Auditiva</strong>.</p>
+                    <ul style="padding-left: 20px;">
+                        <li><strong>1 *Bip* (Sube el tono):</strong> Inhala suave por 4 segundos.</li>
+                        <li><strong>2 *Bips* rápidos:</strong> Aguanta el aire 4 segundos.</li>
+                        <li><strong>1 *Bip* (Baja el tono):</strong> Exhala todo el aire por 6 segundos.</li>
+                    </ul>
+                    <p style="font-style: italic; margin-top: 20px;">Sube el volumen de tu celular. Podrás cerrar los ojos y solo escuchar los tonos para guiarte en la sala de profesores.</p>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn outline" onclick="prevPage(4)">Atrás</button>
+                    <button class="btn" onclick="nextPage(4)">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- PÁG 5: HERRAMIENTA INTERACTIVA (CON AUDIO) -->
+            <div class="page" id="p5">
+                <!-- MODAL DE ESTAMPILLA (Oculto por defecto) -->
+                <div class="stamp-modal" id="stamp-modal">
+                    <div class="stamp-icon">🏅</div>
+                    <h2 style="color: #2e7d32; border: none; margin-bottom: 5px;">¡Bien hecho!</h2>
+                    <p style="color: #315c36; font-weight: bold; font-family: 'Segoe UI'; font-size: 18px; margin-bottom: 25px;">Has logrado presionar tu botón fisiológico.</p>
+                    <button class="btn" style="width: 80%; background: #2e7d32;" onclick="closeStamp()">Continuar</button>
+                </div>
+
+                <div>
+                    <div class="header-tag">⏱️ 4. Práctica Guiada</div>
+                    <h2 style="text-align: center; border: none; margin-bottom: 0;">Anclaje Activo</h2>
+                    
+                    <div class="breathing-wrapper">
+                        <div class="breathing-core" id="b-core">🌬️</div>
+                        <div class="status-text" id="b-text">LISTO</div>
+                    </div>
+
+                    <p style="text-align: center; font-size: 13px; color: #6a9c72; margin-bottom: 10px;" id="cycle-counter">Ciclos completados: 0 / 4</p>
+                    <button class="btn" id="audio-start-btn" style="width: 100%; padding: 15px; font-size: 16px;">▶ INICIAR CICLO</button>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn outline" onclick="prevPage(5); stopBreathing();">Atrás</button>
+                    <button class="btn" onclick="nextPage(5); stopBreathing();">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- PÁG 6: CIERRE Y COMUNIDAD -->
+            <div class="page" id="p6">
+                <div>
+                    <div class="header-tag">🤝 5. Red Institucional</div>
+                    <h2>Nuestra Comunidad</h2>
+                    <p>Esta herramienta digital es tuya. Úsala antes del bloque de las 14:00 hrs o después de un contacto difícil.</p>
+                    <div class="highlight-box">
+                        <strong>No olvides el mundo físico:</strong><br>
+                        Recuerda que cuentas con el <em>Buzón de Descarga</em> para realizar catarsis escrita y romper el papel, y el <em>Muro de Saberes</em> para apoyarte en tus colegas.
+                    </div>
+                    <p style="text-align: center; color: #2e7d32; font-weight: bold; margin-top: 25px;">El cuidado mutuo es nuestra mayor fortaleza.</p>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn outline" onclick="prevPage(6)">Atrás</button>
+                    <button class="btn" onclick="location.reload()">🔄 Reiniciar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Puntos de Navegación -->
+    <div class="progress-dots" id="dots-container">
+        <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
 
     <script>
-        const canvas = document.getElementById('atalayaCanvas');
-        const ctx = canvas.getContext('2d');
+        // --- NAVEGACIÓN, SWIPE Y SALTOS (JUMP) ---
+        const totalPages = 7;
+        let currentPage = 0;
 
-        ctx.font = 'bold 20px sans-serif';
-        ctx.fillStyle = '#1e293b';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
+        function updateDots() {
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentPage);
+            });
+        }
 
-        // El texto que me pediste dentro del canvas
-        ctx.fillText('funciona el QR Gabriel', canvas.width / 2, canvas.height / 2);
+        function nextPage(index) {
+            if (index < totalPages - 1) jumpToPage(index + 1);
+        }
+
+        function prevPage(index) {
+            if (index > 0) jumpToPage(index - 1);
+        }
+
+        // Nueva función para el botón de emergencia (Salto de páginas)
+        function jumpToPage(targetIndex) {
+            if (targetIndex === currentPage) return;
+            for (let i = 0; i < totalPages; i++) {
+                const p = document.getElementById('p' + i);
+                p.classList.remove('active', 'turned');
+                if (i < targetIndex) {
+                    p.classList.add('turned');
+                } else if (i === targetIndex) {
+                    p.classList.add('active');
+                }
+            }
+            currentPage = targetIndex;
+            updateDots();
+        }
+
+        let touchStartX = 0, touchEndX = 0;
+        document.getElementById('swipe-zone').addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
+        document.getElementById('swipe-zone').addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50 && currentPage < totalPages - 1) nextPage(currentPage);
+            if (touchEndX - touchStartX > 50 && currentPage > 0) prevPage(currentPage);
+        });
+
+        // --- MOTOR DE AUDIO Y RESPIRACIÓN (WEB AUDIO API) ---
+        let audioCtx = null;
+        let isPlaying = false;
+        let cycleCount = 0;
+        let phaseTimeouts = []; // Almacena los temporizadores para poder frenarlos
+        
+        const bCore = document.getElementById('b-core');
+        const bText = document.getElementById('b-text');
+        const playBtn = document.getElementById('audio-start-btn');
+        const counterText = document.getElementById('cycle-counter');
+
+        function playBeep(frequency, duration, type = 'sine') {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        }
+
+        function clearBreathingTimeouts() {
+            phaseTimeouts.forEach(t => clearTimeout(t));
+            phaseTimeouts = [];
+        }
+
+        function cycleBreathing() {
+            if(!isPlaying) return;
+
+            // FASE 1: INHALAR (0 a 4s)
+            bText.innerText = "Inhala (4s)";
+            bCore.className = "breathing-core inhale-anim";
+            playBeep(600, 0.4); 
+
+            // FASE 2: RETENER (4s a 8s)
+            phaseTimeouts.push(setTimeout(() => {
+                if(!isPlaying) return;
+                bText.innerText = "Retén (4s)";
+                bCore.className = "breathing-core hold-anim";
+                playBeep(800, 0.15);
+                setTimeout(() => playBeep(800, 0.15), 250);
+            }, 4000));
+
+            // FASE 3: EXHALAR (8s a 14s)
+            phaseTimeouts.push(setTimeout(() => {
+                if(!isPlaying) return;
+                bText.innerText = "Exhala (6s)";
+                bCore.className = "breathing-core exhale-anim";
+                playBeep(300, 0.6); 
+            }, 8000));
+
+            // FIN DE CICLO (14s)
+            phaseTimeouts.push(setTimeout(() => {
+                if(!isPlaying) return;
+                cycleCount++;
+                counterText.innerText = `Ciclos completados: ${cycleCount} / 4`;
+                
+                if (cycleCount >= 4) {
+                    showStamp();
+                    stopBreathing();
+                } else {
+                    cycleBreathing(); // Llama recursivamente al siguiente ciclo
+                }
+            }, 14000));
+        }
+
+        // Controladores de los botones
+        playBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                
+                isPlaying = true;
+                cycleCount = 0;
+                counterText.innerText = `Ciclos completados: ${cycleCount} / 4`;
+                playBtn.innerText = "⏹ DETENER CICLO";
+                playBtn.style.background = "#d32f2f";
+                
+                cycleBreathing();
+            } else {
+                stopBreathing();
+            }
+        });
+
+        function stopBreathing() {
+            isPlaying = false;
+            clearBreathingTimeouts();
+            bCore.className = "breathing-core";
+            bText.innerText = "LISTO";
+            playBtn.innerText = "▶ INICIAR CICLO";
+            playBtn.style.background = "#558b5e";
+        }
+
+        // Funciones para la estampilla de recompensa
+        function showStamp() {
+            document.getElementById('stamp-modal').style.display = 'flex';
+        }
+
+        function closeStamp() {
+            document.getElementById('stamp-modal').style.display = 'none';
+        }
     </script>
-
 </body>
 </html>
