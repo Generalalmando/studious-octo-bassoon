@@ -12,19 +12,19 @@
             font-family: 'Georgia', serif; 
         }
 
-        h1, h2, h3, .btn, .header-tag {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        h1, h2, h3, .btn, .header-tag, .status-text, .cycle-txt {
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
-            background: radial-gradient(circle at 20% 30%, #eef7ee 0%, #d8ead8 50%, #c4ddc4 100%);
+            background: linear-gradient(135deg, #f3ebe1 0%, #e3d5c5 50%, #d5c2ae 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            color: #2c4c2f;
+            color: #4a3525; 
         }
 
         .magazine-wrapper {
@@ -48,13 +48,13 @@
             height: 100%;
             top: 0;
             left: 0;
-            background: linear-gradient(to right, #fbfdfb 0%, #f4f9f4 100%);
-            padding: 35px 30px;
+            background: linear-gradient(to right, #faf6f0 0%, #f5eee4 100%);
+            padding: 30px 25px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             border-radius: 12px 20px 20px 12px;
-            box-shadow: -8px 12px 30px rgba(44, 76, 47, 0.15), inset 4px 0 15px rgba(0,0,0,0.03);
+            box-shadow: -8px 12px 30px rgba(74, 53, 37, 0.15), inset 4px 0 15px rgba(0,0,0,0.02);
             transform-origin: left center;
             transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.5s;
             z-index: 1;
@@ -70,7 +70,7 @@
             left: 0;
             width: 18px;
             height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.02) 100%);
+            background: linear-gradient(to right, rgba(74, 53, 37, 0.08) 0%, rgba(74, 53, 37, 0.01) 100%);
             border-radius: 12px 0 0 12px;
         }
 
@@ -88,180 +88,163 @@
             pointer-events: none;
         }
 
+        .magazine-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 4px 12px rgba(74, 53, 37, 0.1);
+            border: 3px solid #ffffff;
+        }
+
         .header-tag {
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #6a9c72;
-            margin-bottom: 15px;
+            letter-spacing: 2px;
+            color: #8f9e8b;
+            margin-bottom: 10px;
             font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 5px;
         }
 
         h2 {
-            color: #315c36;
-            font-size: 24px;
-            margin-bottom: 15px;
+            color: #70533e;
+            font-size: 22px;
+            margin-bottom: 12px;
             line-height: 1.2;
-            border-bottom: 2px dashed #c4ddc4;
-            padding-bottom: 10px;
+            border-bottom: 2px dashed #e3d5c5;
+            padding-bottom: 8px;
         }
 
         p, li {
-            color: #4a664d;
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: 14px;
+            color: #5c4636;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 12px;
         }
 
         .highlight-box {
-            background-color: #f1f8e9;
-            border-left: 5px solid #81c784;
-            padding: 15px;
+            background-color: #f7f1e8;
+            border-left: 5px solid #e6a184; 
+            padding: 12px;
             border-radius: 0 12px 12px 0;
-            margin: 20px 0;
-            font-size: 15px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.03);
-            position: relative;
+            margin: 15px 0;
+            font-size: 14px;
         }
 
         .nav-buttons {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 25px;
-            gap: 15px;
-            position: relative;
-            z-index: 10;
+            margin-top: 15px;
+            gap: 12px;
         }
 
         .btn {
-            background: #558b5e;
+            background: #8f9e8b; 
             color: #fff;
             border: none;
-            padding: 12px 22px;
+            padding: 11px 20px;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             flex: 1;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(85, 139, 94, 0.3);
+            box-shadow: 0 4px 10px rgba(143, 158, 139, 0.3);
             transition: all 0.3s ease;
         }
 
         .btn:active {
-            transform: scale(0.95);
+            transform: scale(0.97);
         }
 
         .btn.outline {
             background: transparent;
-            color: #558b5e;
-            border: 2px solid #558b5e;
+            color: #8f9e8b;
+            border: 2px solid #8f9e8b;
             box-shadow: none;
         }
 
         .btn.emergency {
-            border: 2px solid #e53935;
-            color: #e53935;
-            background: rgba(229, 57, 53, 0.05);
+            border: 2px solid #e6a184;
+            color: #c46a45;
+            background: rgba(230, 161, 132, 0.08);
+            box-shadow: none;
         }
 
         .progress-dots {
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-top: 15px;
-            z-index: 10;
+            margin-top: 12px;
         }
 
         .dot {
-            width: 8px;
-            height: 8px;
-            background: #b5d5b8;
+            width: 7px;
+            height: 7px;
+            background: #e3d5c5;
             border-radius: 50%;
             transition: 0.3s;
         }
 
         .dot.active {
-            background: #315c36;
+            background: #70533e;
             transform: scale(1.4);
         }
 
-        .icon-large {
-            font-size: 50px;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .float-anim {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* --- MOTOR VISUAL DE RESPIRACIÓN --- */
+        /* --- MOTOR DE RESPIRACIÓN --- */
         .breathing-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: 30px 0;
-            height: 180px;
+            margin: 15px 0;
+            height: 150px;
             position: relative;
         }
 
         .breathing-core {
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, #81c784 0%, #4caf50 100%);
+            width: 75px;
+            height: 75px;
+            background: radial-gradient(circle, #a3b89e 0%, #8f9e8b 100%);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 35px;
-            box-shadow: 0 0 30px rgba(129, 199, 132, 0.6);
+            font-size: 30px;
+            box-shadow: 0 0 25px rgba(143, 158, 139, 0.5);
             transition: all 0.2s;
             position: absolute;
         }
 
         .inhale-anim {
-            transform: scale(1.8);
-            background: radial-gradient(circle, #66bb6a 0%, #388e3c 100%);
+            transform: scale(1.7);
+            background: radial-gradient(circle, #b1c7ac 0%, #7c8c79 100%);
             transition: transform 4s ease-out, background 4s;
         }
 
         .hold-anim {
-            transform: scale(1.8);
-            background: radial-gradient(circle, #43a047 0%, #2e7d32 100%);
-            box-shadow: 0 0 40px rgba(46, 125, 50, 0.7);
+            transform: scale(1.7);
+            background: radial-gradient(circle, #e6a184 0%, #c46a45 100%);
+            box-shadow: 0 0 35px rgba(196, 106, 69, 0.6);
             transition: background 1s, box-shadow 1s;
         }
 
         .exhale-anim {
             transform: scale(1);
-            background: radial-gradient(circle, #81c784 0%, #4caf50 100%);
+            background: radial-gradient(circle, #a3b89e 0%, #8f9e8b 100%);
             transition: transform 6s ease-in-out, background 6s;
         }
 
         .status-text {
-            margin-top: 130px;
-            font-family: 'Segoe UI', sans-serif;
+            margin-top: 115px;
             font-weight: bold;
-            font-size: 18px;
-            color: #315c36;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-size: 16px;
+            color: #70533e;
+            letter-spacing: 1px;
         }
 
-        /* --- ESTAMPILLA / MODAL DE RECOMPENSA --- */
         .stamp-modal {
             display: none;
             position: absolute;
@@ -269,7 +252,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(250, 246, 240, 0.96);
             z-index: 100;
             flex-direction: column;
             justify-content: center;
@@ -280,9 +263,9 @@
         }
 
         .stamp-icon {
-            font-size: 80px;
-            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 75px;
             margin-bottom: 10px;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         @keyframes popIn {
@@ -299,18 +282,15 @@
 
             <!-- PÁG 0: PORTADA -->
             <div class="page active" id="p0">
-                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
-                    <div class="icon-large float-anim">🌿</div>
-                    <h1 style="font-size: 34px; color: #1b5e20; text-align: center; margin-bottom: 5px; line-height: 1.1; letter-spacing: -0.5px;">NOTA VERDE</h1>
-                    <p style="text-align: center; color: #558b5e; font-weight: bold; font-family: 'Segoe UI'; letter-spacing: 2px; font-size: 13px;">COLEGIO MIRAFLORES</p>
+                <div>
+                    <h1 style="font-size: 32px; color: #4a3525; text-align: center; margin-bottom: 2px; letter-spacing: -0.5px;">NOTA VERDE</h1>
+                    <p style="text-align: center; color: #8f9e8b; font-weight: bold; font-family: 'Segoe UI'; letter-spacing: 2px; font-size: 12px; margin-bottom: 10px;">COLEGIO MIRAFLORES</p>
                     
-                    <div style="margin-top: 40px; text-align: center; border-top: 1px solid #d8ead8; padding-top: 20px; max-width: 80%;">
-                        <p style="font-size: 15px; color: #6a9c72; font-style: italic;">Un espacio personal de calma, monitoreo y soporte cotidiano.</p>
-                    </div>
+                    <img class="magazine-img" src="imagen_bienestar_emocional.jpg" alt="Bienestar Emocional Docente" onerror="this.onerror=null; this.src='imagen_bienestar_emocional.png';">
                 </div>
-                <div class="nav-buttons" style="flex-direction: column; gap: 12px;">
+                <div class="nav-buttons" style="flex-direction: column; gap: 10px; margin-top: 5px;">
                     <button class="btn outline emergency" style="width: 100%;" onclick="jumpToPage(5)">🚨 Pausa Inmediata: Ir a Respirar</button>
-                    <button class="btn" style="width: 100%;" onclick="nextPage(0)">Abrir Contenido ➔</button>
+                    <button class="btn" style="width: 100%;" onclick="nextPage(0)">Abrir Cuadernillo ➔</button>
                 </div>
             </div>
 
@@ -319,13 +299,13 @@
                 <div>
                     <div class="header-tag">📖 Contenido</div>
                     <h2>Ruta de Apoyo</h2>
-                    <ul style="list-style: none; margin-top: 20px;">
-                        <li style="margin-bottom: 18px;"><strong>1.</strong> El peso de educar hoy</li>
-                        <li style="margin-bottom: 18px;"><strong>2.</strong> El Nervio Vago: Tu freno biológico</li>
-                        <li style="margin-bottom: 18px;"><strong>3.</strong> El escudo del cuidador</li>
-                        <li style="margin-bottom: 18px;"><strong>4.</strong> Instrucciones de rescate</li>
-                        <li style="margin-bottom: 18px;"><strong>5.</strong> ⏱️ Entrenador Auditivo</li>
-                        <li style="margin-bottom: 18px;"><strong>6.</strong> Nuestra red de seguridad</li>
+                    <ul style="list-style: none; margin-top: 15px;">
+                        <li style="margin-bottom: 14px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>1.</strong> El peso de educar hoy</li>
+                        <li style="margin-bottom: 14px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>2.</strong> El Nervio Vago: Tu freno biológico</li>
+                        <li style="margin-bottom: 14px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>3.</strong> El escudo del cuidador</li>
+                        <li style="margin-bottom: 14px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>4.</strong> Instrucciones de rescate</li>
+                        <li style="margin-bottom: 14px; border-bottom: 1px dashed #e3d5c5; padding-bottom: 6px;"><strong>5.</strong> ⏱️ Entrenador Auditivo</li>
+                        <li style="margin-bottom: 14px; padding-bottom: 6px;"><strong>6.</strong> Nuestra red de seguridad</li>
                     </ul>
                 </div>
                 <div class="nav-buttons">
@@ -339,12 +319,13 @@
                 <div>
                     <div class="header-tag">🌿 1. Contexto Real</div>
                     <h2>El peso de educar hoy</h2>
-                    <p>Sabemos que trabajar en un entorno con un 91% de vulnerabilidad escolar expone al cuerpo a una alta demanda socioemocional diaria.</p>
-                    <div class="highlight-box">
-                        <strong>No es una falla tuya, es biología.</strong><br>
-                        Los registros demuestran que lidiar con la complejidad de interacciones desreguladas o contener situaciones críticas agota nuestras reservas fisiológicas.
+                    <p>Trabajar en un entorno complejo expone al cuerpo a una alta demanda socioemocional. Sentir desgaste o cansancio es una respuesta biológica normal.</p>
+                    
+                    <img class="magazine-img" src="imagen_apoyarse_docentes.jpg" alt="Apoyarse en otros docentes" onerror="this.onerror=null; this.src='imagen_apoyarse_docentes.png';">
+                    
+                    <div class="highlight-box" style="margin: 8px 0; padding: 10px;">
+                        Compartir experiencias fortalece el bienestar y la confianza profesional entre pares.
                     </div>
-                    <p>Sentir un desgaste profundo o cansancio sostenido no es una falta de capacidad profesional; es la respuesta natural de un sistema nervioso expuesto a la hipervigilancia.</p>
                 </div>
                 <div class="nav-buttons">
                     <button class="btn outline" onclick="prevPage(2)">Atrás</button>
@@ -357,11 +338,11 @@
                 <div>
                     <div class="header-tag">🧠 2. La Ciencia de la Calma</div>
                     <h2>Tu Freno Biológico</h2>
-                    <p>Cuando vivimos un hito tenso, como la gestión de un reclamo directo o una complicación imprevista, el cuerpo activa sus alarmas de estrés.</p>
-                    <p>En esos momentos, no podemos calmar el cuerpo solo con desearlo. Necesitamos activar un mecanismo físico: <strong>El Nervio Vago</strong>.</p>
-                    <div class="highlight-box">
-                        Este nervio conecta directamente el cerebro con el diafragma. Al respirar extendiendo deliberadamente la exhalación, estimulamos este canal, obligando al pulso a bajar y devolviéndonos el control de forma rápida.
-                    </div>
+                    <p>Ante la incertidumbre o un hito de tensión, el cuerpo activa sus alarmas. Necesitamos activar un mecanismo físico regulador: el Nervio Vago.</p>
+                    
+                    <img class="magazine-img" src="imagen_cultivar_recordatorios.jpg" alt="Qué queremos cultivar" onerror="this.onerror=null; this.src='imagen_cultivar_recordatorios.png';">
+
+                    <p style="font-size: 14px; margin-top: 5px;">Al respirar extendiendo deliberadamente la exhalación, masajeamos este canal, reduciendo la ansiedad de manera inmediata.</p>
                 </div>
                 <div class="nav-buttons">
                     <button class="btn outline" onclick="prevPage(3)">Atrás</button>
@@ -374,9 +355,9 @@
                 <div>
                     <div class="header-tag">🛡️ 3. Prevención Activa</div>
                     <h2>El Escudo del Cuidador</h2>
-                    <p>Para quienes ejercen el rol de contención comunitaria, regular los propios estados emocionales es un piso mínimo de resguardo profesional.</p>
-                    <div style="text-align: center; margin: 25px 0; font-size: 40px;">🪫 ➔ 🔋</div>
-                    <p>Establecer pausas breves de enraizamiento y validación mutua nos ayuda a procesar la sobrecarga antes de que se transforme en un malestar crónico.</p>
+                    <p>Regular los propios estados emocionales es un piso mínimo de resguardo. Establecer estrategias diarias nos ayuda a mitigar la sobrecarga acumulada.</p>
+                    
+                    <img class="magazine-img" src="imagen_mi_dia_emociones.jpg" alt="Estrategias diarias" onerror="this.onerror=null; this.src='imagen_mi_dia_emociones.png';">
                 </div>
                 <div class="nav-buttons">
                     <button class="btn outline" onclick="prevPage(4)">Atrás</button>
@@ -384,32 +365,28 @@
                 </div>
             </div>
 
-            <!-- PÁG 5: INSTRUCCIONES HERRAMIENTA -->
-            <div class="page" id="p4b">
+            <!-- PÁG 5: INSTRUCCIONES -->
+            <div class="page" id="p5">
                 <div>
                     <div class="header-tag">⚙️ 4. Instrucciones</div>
                     <h2>Entrenamiento 4-4-6</h2>
-                    <p>Lograr quietud mental en un entorno dinámico requiere apoyos prácticos. Por esto, implementamos este sistema con <strong>Guía Auditiva integrada</strong>.</p>
-                    <ul style="padding-left: 20px;">
-                        <li><strong>1 *Bip* (Tono ascendente):</strong> Inhala por la nariz durante 4 segundos.</li>
-                        <li><strong>2 *Bips* rápidos:</strong> Sostén el aire en tus pulmones por 4 segundos.</li>
-                        <li><strong>1 *Bip* (Tono descendente):</strong> Exhala lento y por completo durante 6 segundos.</li>
-                    </ul>
-                    <p style="font-style: italic; margin-top: 20px;">Puedes usar audífonos o subir el volumen de tu dispositivo para realizar el ejercicio con los ojos cerrados, dejándote guiar únicamente por los sonidos.</p>
+                    <p>Lograr un momento de quietud mental requiere soportes prácticos. Sigue los ritmos basados en la guía de relajación fisiológica:</p>
+                    
+                    <img class="magazine-img" src="imagen_relajacion_respiracion.jpg" alt="Relajación de Respiración" onerror="this.onerror=null; this.src='imagen_relajacion_respiracion.png';">
                 </div>
                 <div class="nav-buttons">
-                    <button class="btn outline" onclick="prevPage(4)">Atrás</button>
-                    <button class="btn" onclick="jumpToPage(5)">Siguiente</button>
+                    <button class="btn outline" onclick="prevPage(5)">Atrás</button>
+                    <button class="btn" onclick="nextPage(5)">Siguiente</button>
                 </div>
             </div>
 
             <!-- PÁG 6: HERRAMIENTA INTERACTIVA -->
-            <div class="page" id="p5">
+            <div class="page" id="p6">
                 <div class="stamp-modal" id="stamp-modal">
                     <div class="stamp-icon">🏅</div>
-                    <h2 style="color: #2e7d32; border: none; margin-bottom: 5px;">¡Bien hecho!</h2>
-                    <p style="color: #315c36; font-weight: bold; font-family: 'Segoe UI'; font-size: 16px; margin-bottom: 25px;">Has logrado presionar tu botón fisiológico.</p>
-                    <button class="btn" style="width: 80%; background: #2e7d32;" onclick="closeStamp()">Continuar</button>
+                    <h2 style="color: #70533e; border: none; margin-bottom: 5px;">¡Bien hecho!</h2>
+                    <p style="color: #5c4636; font-weight: bold; font-size: 15px; margin-bottom: 25px;">Has logrado presionar tu botón fisiológico.</p>
+                    <button class="btn" style="width: 80%; background: #8f9e8b;" onclick="closeStamp()">Continuar</button>
                 </div>
 
                 <div>
@@ -421,29 +398,26 @@
                         <div class="status-text" id="b-text">LISTO</div>
                     </div>
 
-                    <p style="text-align: center; font-size: 13px; color: #6a9c72; margin-bottom: 10px;" id="cycle-counter">Ciclos completados: 0 / 4</p>
-                    <button class="btn" id="audio-start-btn" style="width: 100%; padding: 15px; font-size: 16px;">▶ INICIAR CICLO</button>
+                    <p class="cycle-txt" style="text-align: center; font-size: 13px; color: #8f9e8b; margin-bottom: 10px;" id="cycle-counter">Ciclos completados: 0 / 4</p>
+                    <button class="btn" id="audio-start-btn" style="width: 100%; padding: 14px; font-size: 15px; background: #70533e;">▶ INICIAR CICLO</button>
                 </div>
                 <div class="nav-buttons">
-                    <button class="btn outline" onclick="prevPage(5); stopBreathing();">Atrás</button>
-                    <button class="btn" onclick="nextPage(5); stopBreathing();">Siguiente</button>
+                    <button class="btn outline" onclick="prevPage(6); stopBreathing();">Atrás</button>
+                    <button class="btn" onclick="nextPage(6); stopBreathing();">Siguiente</button>
                 </div>
             </div>
 
             <!-- PÁG 7: CIERRE -->
-            <div class="page" id="p6">
+            <div class="page" id="p7">
                 <div>
                     <div class="header-tag">🤝 6. Red Institucional</div>
-                    <h2>Nuestra Comunidad</h2>
-                    <p>Esta herramienta digital está diseñada como un recurso general a tu disposición para cualquier hito de la jornada.</p>
-                    <div class="highlight-box">
-                        <strong>Estrategias integradas:</strong><br>
-                        Puedes recurrir a este anclaje de forma preventiva antes de un bloque complejo, o usarlo para restablecer el equilibrio posterior a una interacción de alta exigencia.
-                    </div>
-                    <p>Mantén presente el uso del <em>Buzón de Descarga</em> analógico para liberar tensiones por escrito, y el <em>Muro de Saberes</em> para conectar con los recursos de tus compañeros.</p>
+                    <h2>Tu Espacio Seguro</h2>
+                    <p>Esta herramienta te acompaña en cualquier hito de la jornada. Al cerrar tu sesión, te invitamos a reflexionar sobre tus recursos de afrontamiento protectores:</p>
+                    
+                    <img class="magazine-img" src="imagen_mi_bitacora.jpg" alt="Mi Bitácora" onerror="this.onerror=null; this.src='imagen_mi_bitacora.png';">
                 </div>
                 <div class="nav-buttons">
-                    <button class="btn outline" onclick="prevPage(6)">Atrás</button>
+                    <button class="btn outline" onclick="prevPage(7)">Atrás</button>
                     <button class="btn" onclick="location.reload()">🔄 Reiniciar</button>
                 </div>
             </div>
@@ -454,11 +428,11 @@
     <!-- Puntos de Navegación -->
     <div class="progress-dots" id="dots-container">
         <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
     </div>
 
     <script>
-        const totalPages = 7;
+        const totalPages = 8;
         let currentPage = 0;
 
         function updateDots() {
@@ -499,7 +473,7 @@
             if (touchEndX - touchStartX > 50 && currentPage > 0) prevPage(currentPage);
         });
 
-        // --- MOTOR DE AUDIO ---
+        // --- MOTOR DE AUDIO INTERACTIVO ---
         let audioCtx = null;
         let isPlaying = false;
         let cycleCount = 0;
@@ -516,7 +490,7 @@
             const gain = audioCtx.createGain();
             osc.type = type;
             osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-            gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
             osc.connect(gain);
             gain.connect(audioCtx.destination);
@@ -534,21 +508,21 @@
 
             bText.innerText = "Inhala (4s)";
             bCore.className = "breathing-core inhale-anim";
-            playBeep(600, 0.4); 
+            playBeep(550, 0.4); 
 
             phaseTimeouts.push(setTimeout(() => {
                 if(!isPlaying) return;
                 bText.innerText = "Retén (4s)";
                 bCore.className = "breathing-core hold-anim";
-                playBeep(800, 0.15);
-                setTimeout(() => playBeep(800, 0.15), 250);
+                playBeep(750, 0.15);
+                setTimeout(() => playBeep(750, 0.15), 250);
             }, 4000));
 
             phaseTimeouts.push(setTimeout(() => {
                 if(!isPlaying) return;
                 bText.innerText = "Exhala (6s)";
                 bCore.className = "breathing-core exhale-anim";
-                playBeep(300, 0.6); 
+                playBeep(280, 0.6); 
             }, 8000));
 
             phaseTimeouts.push(setTimeout(() => {
@@ -574,7 +548,7 @@
                 cycleCount = 0;
                 counterText.innerText = `Ciclos completados: ${cycleCount} / 4`;
                 playBtn.innerText = "⏹ DETENER CICLO";
-                playBtn.style.background = "#d32f2f";
+                playBtn.style.background = "#c46a45";
                 
                 cycleBreathing();
             } else {
@@ -588,7 +562,7 @@
             bCore.className = "breathing-core";
             bText.innerText = "LISTO";
             playBtn.innerText = "▶ INICIAR CICLO";
-            playBtn.style.background = "#558b5e";
+            playBtn.style.background = "#70533e";
         }
 
         function showStamp() {
